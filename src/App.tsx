@@ -10,6 +10,9 @@ export const App = () => {
   },[node])
 
   return (
-    <div ref={node}/>
+    <div ref={node} style={{
+      overflow: "hidden",
+      maxHeight: "100vh"
+    }}/>
   );
 }

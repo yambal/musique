@@ -3,6 +3,7 @@ import p5 from 'p5'
 export const sketch = (p: p5) => {
   let renderer: p5.Renderer
   let videoCapture: p5.Element
+
   p.setup = () => {
     renderer = p.createCanvas(p.windowWidth, p.windowHeight);
     videoCapture = p.createCapture('video')
