@@ -1,13 +1,10 @@
 import p5 from 'p5'
-import React from 'react';
 
 export const sketch = (p: p5) => {
+  let renderer: p5.Renderer
   let videoCapture: p5.Element
-  
   p.setup = () => {
-    const Renderer: p5.Renderer = p.createCanvas(p.windowWidth, p.windowHeight);
-    // const Renderer: p5.Renderer = p.createCanvas(480, 480)
-    // Renderer.parent('Renderer');
+    renderer = p.createCanvas(p.windowWidth, p.windowHeight);
     videoCapture = p.createCapture('video')
     videoCapture.hide()
   }
@@ -17,7 +14,11 @@ export const sketch = (p: p5) => {
   }
 
   p.mousePressed = () => {
-    let fs = p.fullscreen();
-    p.fullscreen(!fs);
+    let fs = !!p.fullscreen()
+    p.fullscreen(!fs)
+  }
+
+  p.windowResized = () => {
+    p.resizeCanvas(p.windowWidth, p.windowHeight)
   }
 }
